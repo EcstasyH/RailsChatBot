@@ -7,12 +7,12 @@
         <% next%>
     <%end%>
     <%i=i+1%>
-    <%if i>4%>
+    <%if i>15%>
         <%break%>
     <%end%>
     <%a << message%>
 <%end%>
-<% a.reverse.each do |message|%>
+<% a.each do |message|%>
     <%if message.from_bot==true%>
     <div class="msg left-msg">
         <div
@@ -23,11 +23,18 @@
         <div class="msg-bubble">
           <div class="msg-info">
             <div class="msg-info-name">BOT</div>
-            <div class="msg-info-time"><%= message.created_at.strftime('%Y-%m-%d %H:%M:%S')%></div>
+            <div class="msg-info-time">
+            <% a = message.created_at + 3600*8 %>
+            <%= a.strftime('%Y-%m-%d %H:%M:%S')%>
+            </div>
           </div>
           
           <div class="msg-text">
-            <%= message.body[2..-3]%>
+            <% m = message.body.delete('[]\"\\')%>
+            <% m = m.split(",")%>
+            <% m.each do |msg|%>
+              <%= msg %><br>
+            <%end%>
           </div>
         </div>
     </div>
@@ -41,7 +48,11 @@
         <div class="msg-bubble">
           <div class="msg-info">
             <div class="msg-info-name"></div>
-            <div class="msg-info-time"><%= message.created_at.strftime('%Y-%m-%d %H:%M:%S')%></div>
+            <div class="msg-info-time">
+
+            <% a = message.created_at + 3600*8 %>
+            <%= a.strftime('%Y-%m-%d %H:%M:%S')%>
+            </div>
           </div>
           
           <div class="msg-text">
