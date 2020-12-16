@@ -26,9 +26,8 @@
             <div class="msg-info-time"><%= message.created_at.strftime('%Y-%m-%d %H:%M:%S')%></div>
           </div>
           
-          <%str = message.body.delete("\"[]")%>
           <div class="msg-text">
-            <%=str%>
+            <%= message.body[2..-3]%>
           </div>
         </div>
     </div>

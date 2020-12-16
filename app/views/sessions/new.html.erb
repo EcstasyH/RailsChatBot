@@ -4,20 +4,19 @@
   <p><%= flash[:login_error] %></p>
 <% end %>
  
-<%= form_for :session, url: :sessions_create do |f| %>
- 
+<%= form_for :session, url: :sessions_create do |f| %> 
   <p>
-    <%= f.label :username %>
+    <%= f.label :账号 %>
     <%= f.text_field :username %>
   </p>
  
   <p>
-    <%= f.label :password %>
+    <%= f.label :密码 %>
     <%= f.password_field :password %>
   </p>
  
   <p><%= f.button "登录" %></p>
+  <p><%= link_to '返回', controller: 'welcome'  , action: 'index'%></p>
+
 <% end %>
 
-
-<%= link_to '返回', controller: 'welcome'  , action: 'index'%>
